@@ -56,7 +56,7 @@ const CartItem = ({cartItem}) => {
 
          
         {/* REMOVE */}
-        <button className='mt-2 link link-primary lint-hover text-sm'>
+        <button className='mt-2 link link-primary link-hover text-sm'>
           remove
         </button>
       </div>
