@@ -1,17 +1,16 @@
-import { Form, Link, redirect } from "react-router-dom"
+import { Form, Link, redirect, useNavigate } from "react-router-dom"
 import { FormInput, SubmitBtn } from "../components"
 import { customFetch } from "../utils"
 import { toast } from "react-toastify"
 import { loginUser } from "../features/user/userSlice"
+import { useDispatch } from "react-redux"
 
 export const action =(store) => async ({request}) => {
   const formData = await request.formData()
   const data = Object.fromEntries(formData)
 
   try {
-    const response = await customFetch.post('/auth/local', data)
-    console.log(response.data);
-    
+    const response = await customFetch.post('/auth/local', data)    
     store.dispatch(loginUser(response.data))
     toast.success('logged in successfully')
     return redirect('/')
@@ -25,6 +24,25 @@ export const action =(store) => async ({request}) => {
 }
 
 const Login = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const loginAsGuestUser = async () => {
+    try {
+      const response = await customFetch.post('/auth/local', {
+        identifier: 'test@test.com',
+        password: 'secret'
+      })
+      dispatch(loginUser(response.data))
+      toast.success('welcome quest user')
+      navigate('/')
+    } catch (error) {
+      console.log(error);
+      toast.error('guest user login error. please try again')
+    }
+  }
+
+
   return <section className="h-screen grid place-items-center">
     <Form
       method="post"
@@ -37,14 +55,12 @@ const Login = () => {
         type="email"
         label="email"
         name="identifier"
-        defaultValue="test@test.com"
       />
 
       <FormInput
         type="password"
         label="password"
         name="password"
-        defaultValue="secret"
       />
 
       <div className="mt-4">
@@ -54,6 +70,7 @@ const Login = () => {
         <button 
           type="button" 
           className="btn btn-secondary btn-block"
+          onClick={loginAsGuestUser}
         >
           guest user
         </button>
