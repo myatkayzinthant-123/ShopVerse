@@ -16,7 +16,6 @@ const Navbar = () => {
     }
 
     const numItemsInCart = useSelector((state) => state.cartState.numItemCart)  //READ data from the store
-    console.log(numItemsInCart);
     
   return (
     <nav className="bg-base-200">
