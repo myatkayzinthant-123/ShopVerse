@@ -7,7 +7,6 @@ const CartTotals = () => {
     (state) => state.cartState
   )
 
-
   return (
     <div className='card bg-base-200'>
       <div className='card-body'>
