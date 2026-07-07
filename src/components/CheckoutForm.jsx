@@ -23,11 +23,15 @@ export const action = (store) =>  async ({request}) => {
   }
 
   try {
-    const response = await customFetch.post('/orders', {data: info}, {
-      headers: {
-        Authorization: `Bearer ${user.token}`
-      }
-    })
+    const response = await customFetch.post(
+      '/orders', 
+      {data: info}, 
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
+      })
+    QueryClient.removeQueries(['orders'])
     store.dispatch(clearCart())
     toast.success('order placed successfully')
     return redirect('/orders')
@@ -37,7 +41,7 @@ export const action = (store) =>  async ({request}) => {
       error?.response?.data?.error?.message || 
       'there was an error placing your order'
     toast.error(errorMessage)
-    if (error.response.status === 401) return redirect('/login')
+    if (error?.response?.status === 401) return redirect('/login')
     return null
   }
 
