@@ -33,13 +33,13 @@ Comfy Store is a modern e-commerce web application built with React. Users can b
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-![Home Page](screenshots/home.png)
+![Home Page](./public/screenshots/home.png)
 
 ### 🛍️ Products Page
-![Products Page](screenshots/products.png)
+![Products Page](./public/screenshots/products.png)
 
 ### 💳 Checkout
-![Checkout](screenshots/checkout.png)
+![Checkout](./public/screenshots/checkout.png)
 
 
 ## 📁 Project Structure
