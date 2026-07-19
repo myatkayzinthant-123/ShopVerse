@@ -41,21 +41,37 @@ export const loader = (store, queryClient) => async ({request}) => {
     )
     return {orders:response.data.data, meta:response.data.meta}
   } catch (error) {
+    console.log("FULL ERROR:", error)
+  console.log("STATUS:", error?.response?.status)
+  console.log("DATA:", error?.response?.data)
+  
     const errorMessage = 
       error?.response?.data?.message || 
       'there was an error placing your order'
       toast.error(errorMessage)
-      if (error?.response?.status === 401 || 403) return redirect('/login')
-      return null
+    if (
+      error?.response?.status === 401 || 
+      error?.response?.status === 403
+    ) {
+      return redirect('/login')
+    }      
+    return null
   } 
 
 }
 
+
+
 const Orders = () => {
-  const {meta} = useLoaderData()
+  const data = useLoaderData()
+  
+  if (!data) {
+    return <SectionTitle text="Unable to load orders"/>
+  }
+  
+  const {meta} = data
   console.log(meta);
   
-
   if (meta.pagination.total < 1) {
     return <SectionTitle text='please make an order'/>
   }

@@ -30,8 +30,18 @@ Comfy Store is a modern e-commerce web application built with React. Users can b
 - React Toastify
 - Vite
 
-## 📁 Project Structure
+## 📸 Screenshots
+### 🏠 Home Page
+![Home Page](./screenshots/home.png)
 
+### 🛍️ Products Page
+![Products Page](/screenshots/products.png)
+
+### 💳 Checkout
+![Checkout](/screenshots/checkout.png)
+
+
+## 📁 Project Structure
 ```
 src/
 ├── components/

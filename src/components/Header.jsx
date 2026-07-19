@@ -20,7 +20,7 @@ const Header = () => {
 
   return (
     <header className='bg-netural py-2 text-netural-content'>
-      <div className="align-element flex justify-center sm: justify-end">
+      <div className="align-element flex sm: justify-end">
         
         {user ? (
           <div className='flex gap-x-2 sm:gap-x-8 items-center'>
