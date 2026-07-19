@@ -26,7 +26,7 @@ const Navbar = () => {
                 to="/" 
                 className="hidden lg:flex btn btn-secondary text-3xl items-center"
             >
-                Shopify
+                ShopVerse
             </NavLink>
 
             <div className="dropdown">
