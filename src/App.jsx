@@ -42,7 +42,7 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/ShopVerse",
     element: <HomeLayout/>,
     errorElement: <Error/>,
     children: [
