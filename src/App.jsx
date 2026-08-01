@@ -97,7 +97,11 @@ const router = createBrowserRouter([
     errorElement: <Error/>,
     action: registerAction
   }
-]);
+]
+{
+        basename: "/ShopVerse",
+}
+);
 
 
 const App = () => {
